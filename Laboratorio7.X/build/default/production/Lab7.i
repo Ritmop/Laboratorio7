@@ -2833,6 +2833,7 @@ extern char * ftoa(float f, int * status);
 
 
 
+
 uint8_t counter;
 uint8_t pot0_in;
 uint8_t pot1_in;
@@ -2840,6 +2841,7 @@ uint8_t pot1_in;
 
 void setup(void);
 void TMR0_reset(void);
+void TMR2_reset(void);
 
 
 
@@ -2868,13 +2870,20 @@ void __attribute__((picinterrupt(("")))) isr(void){
     }
     return;
 }
-# 83 "Lab7.c"
+# 85 "Lab7.c"
 int main(void) {
     setup();
     while(1){
 
-        PORTC = pot0_in;
-        PORTD = pot1_in;
+        if(TMR2IF){
+            TRISCbits.TRISC2 = 0;
+            TMR2_reset();
+        }
+        else{
+            TRISCbits.TRISC2 = 1;
+            T2CONbits.TMR2ON = 1;
+        }
+        PORTD = pot0_in;
     }
 }
 
@@ -2886,8 +2895,9 @@ void setup(void){
     TRISAbits.TRISA1 = 1;
     ANSELbits.ANS2 = 1;
     TRISAbits.TRISA2 = 1;
+    TRISCbits.TRISC2 = 0;
 
-    TRISC = 0;
+
     TRISD = 0;
     TRISE = 0;
     PORTC = 0;
@@ -2909,6 +2919,18 @@ void setup(void){
     TMR0_reset();
 
 
+    T2CONbits.T2CKPS0 = 0;
+    T2CONbits.T2CKPS1 = 1;
+    T2CONbits.TOUTPS0 = 1;
+    T2CONbits.TOUTPS1 = 0;
+    T2CONbits.TOUTPS2 = 0;
+    T2CONbits.TOUTPS3 = 1;
+    T2CONbits.TMR2ON = 0;
+
+    PR2 = 124;
+    TMR2_reset();
+
+
     GIE = 1;
     T0IE = 1;
     ADIE = 1;
@@ -2926,11 +2948,30 @@ void setup(void){
     ADCON0bits.CHS0 = 1;
     ADCON0bits.ADON = 1;
 
+
+    CCP1CONbits.CCP1M0 = 0;
+    CCP1CONbits.CCP1M1 = 0;
+    CCP1CONbits.CCP1M2 = 1;
+    CCP1CONbits.CCP1M3 = 1;
+
+    CCP1CONbits.P1M0 = 0;
+    CCP1CONbits.P1M1 = 0;
+
+    CCPR1L = 0b01111101;
+    CCP1CONbits.DC1B0 = 0;
+    CCP1CONbits.DC1B1 = 0;
+
+
     return;
 }
 
 void TMR0_reset(void){
     TMR0 = 131;
     T0IF = 0;
+    return;
+}
+
+void TMR2_reset(void){
+    TMR2IF = 0;
     return;
 }

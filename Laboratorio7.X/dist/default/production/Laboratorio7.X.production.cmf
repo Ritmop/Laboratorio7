@@ -14,16 +14,17 @@
 $dist/default/production\Laboratorio7.X.production.o
 cinit CODE 0 F F 7 2 1
 idloc IDLOC 5 2000 2000 4 2 1
-text1 CODE 0 16 16 39 2 1
-text2 CODE 0 92 92 6 2 1
-text3 CODE 0 4F 4F 34 2 1
-text4 CODE 0 98 98 6 2 1
-maintext CODE 0 83 83 F 2 1
+text1 CODE 0 16 16 55 2 1
+text2 CODE 0 CD CD 4 2 1
+text3 CODE 0 C1 C1 6 2 1
+text4 CODE 0 6B 6B 34 2 1
+text5 CODE 0 C7 C7 6 2 1
+maintext CODE 0 9F 9F 22 2 1
 cstackCOMMON COMMON 1 73 73 2 1 1
 intentry CODE 0 4 4 8 2 1
 bssCOMMON COMMON 1 70 70 3 1 1
 config CONFIG 4 2007 2007 2 2 1
-$C:\Users\judah\AppData\Local\Temp\xcAs4ck.o
+$C:\Users\judah\AppData\Local\Temp\xcAs818.o
 idloc IDLOC 5 2000 2000 4 2 1
 reset_vec CODE 0 0 0 3 2 1
 end_init CODE 0 C C 3 2 1
@@ -43,11 +44,11 @@ BANK1 A0-EF 1
 BANK2 110-16F 1
 BANK3 190-1EF 1
 CONST 3-3 2
-CONST 9E-1FFF 2
+CONST D1-1FFF 2
 ENTRY 3-3 2
-ENTRY 9E-1FFF 2
+ENTRY D1-1FFF 2
 CODE 3-3 2
-CODE 9E-1FFF 2
+CODE D1-1FFF 2
 SFR0 0-1F 1
 SFR1 80-9F 1
 SFR2 100-10F 1
@@ -55,9 +56,9 @@ SFR3 180-18F 1
 COMMON 75-7D 1
 EEDATA 2100-21FF 2
 STRCODE 3-3 2
-STRCODE 9E-1FFF 2
+STRCODE D1-1FFF 2
 STRING 3-3 2
-STRING 9E-1FFF 2
+STRING D1-1FFF 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
 # The beginning of the section is indicated by %LINETAB.
@@ -72,76 +73,103 @@ STRING 9E-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\Laboratorio7.X.production.o
-F cinit CODE >484:C:\Users\judah\AppData\Local\Temp\xcAs4ck.s
-F cinit CODE >487:C:\Users\judah\AppData\Local\Temp\xcAs4ck.s
-F cinit CODE >504:C:\Users\judah\AppData\Local\Temp\xcAs4ck.s
-10 cinit CODE >505:C:\Users\judah\AppData\Local\Temp\xcAs4ck.s
-11 cinit CODE >506:C:\Users\judah\AppData\Local\Temp\xcAs4ck.s
-12 cinit CODE >512:C:\Users\judah\AppData\Local\Temp\xcAs4ck.s
-12 cinit CODE >514:C:\Users\judah\AppData\Local\Temp\xcAs4ck.s
-13 cinit CODE >515:C:\Users\judah\AppData\Local\Temp\xcAs4ck.s
-4 intentry CODE >51:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-98 text4 CODE >143:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-98 text4 CODE >144:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-9C text4 CODE >145:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-9D text4 CODE >147:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-4F text3 CODE >51:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-4F text3 CODE >52:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-53 text3 CODE >55:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-58 text3 CODE >56:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-5B text3 CODE >58:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-61 text3 CODE >61:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-68 text3 CODE >62:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-6F text3 CODE >64:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-73 text3 CODE >65:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-75 text3 CODE >67:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-79 text3 CODE >68:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-7B text3 CODE >71:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-7C text3 CODE >74:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-92 text2 CODE >143:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-92 text2 CODE >144:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-96 text2 CODE >145:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-97 text2 CODE >147:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-16 text1 CODE >92:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-16 text1 CODE >94:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-19 text1 CODE >96:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-1C text1 CODE >97:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-1F text1 CODE >98:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-22 text1 CODE >99:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-25 text1 CODE >101:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-26 text1 CODE >102:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-27 text1 CODE >103:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-28 text1 CODE >104:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-2B text1 CODE >105:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-2C text1 CODE >106:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-2D text1 CODE >109:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-30 text1 CODE >110:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-31 text1 CODE >111:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-32 text1 CODE >112:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-33 text1 CODE >115:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-34 text1 CODE >116:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-35 text1 CODE >117:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-36 text1 CODE >118:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-37 text1 CODE >119:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-38 text1 CODE >120:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-3D text1 CODE >123:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-3E text1 CODE >124:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-3F text1 CODE >125:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-42 text1 CODE >128:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-43 text1 CODE >129:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-44 text1 CODE >130:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-45 text1 CODE >132:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-48 text1 CODE >133:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-49 text1 CODE >134:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-4A text1 CODE >135:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-4B text1 CODE >136:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-4C text1 CODE >137:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-4D text1 CODE >138:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-4E text1 CODE >141:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-83 maintext CODE >83:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-83 maintext CODE >84:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-88 maintext CODE >87:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
-8C maintext CODE >88:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+F cinit CODE >496:C:\Users\judah\AppData\Local\Temp\xcAs818.s
+F cinit CODE >499:C:\Users\judah\AppData\Local\Temp\xcAs818.s
+F cinit CODE >516:C:\Users\judah\AppData\Local\Temp\xcAs818.s
+10 cinit CODE >517:C:\Users\judah\AppData\Local\Temp\xcAs818.s
+11 cinit CODE >518:C:\Users\judah\AppData\Local\Temp\xcAs818.s
+12 cinit CODE >524:C:\Users\judah\AppData\Local\Temp\xcAs818.s
+12 cinit CODE >526:C:\Users\judah\AppData\Local\Temp\xcAs818.s
+13 cinit CODE >527:C:\Users\judah\AppData\Local\Temp\xcAs818.s
+4 intentry CODE >53:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+C7 text5 CODE >179:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+C7 text5 CODE >180:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+CB text5 CODE >181:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+CC text5 CODE >183:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+6B text4 CODE >53:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+6B text4 CODE >54:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+6F text4 CODE >57:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+74 text4 CODE >58:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+77 text4 CODE >60:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+7D text4 CODE >63:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+84 text4 CODE >64:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+8B text4 CODE >66:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+8F text4 CODE >67:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+91 text4 CODE >69:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+95 text4 CODE >70:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+97 text4 CODE >73:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+98 text4 CODE >76:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+C1 text3 CODE >179:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+C1 text3 CODE >180:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+C5 text3 CODE >181:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+C6 text3 CODE >183:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+CD text2 CODE >185:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+CD text2 CODE >186:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+D0 text2 CODE >188:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+16 text1 CODE >101:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+16 text1 CODE >103:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+19 text1 CODE >105:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+1C text1 CODE >106:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+1F text1 CODE >107:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+22 text1 CODE >108:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+25 text1 CODE >109:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+26 text1 CODE >112:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+27 text1 CODE >113:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+28 text1 CODE >114:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+2B text1 CODE >115:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+2C text1 CODE >116:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+2D text1 CODE >119:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+30 text1 CODE >120:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+31 text1 CODE >121:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+32 text1 CODE >122:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+33 text1 CODE >125:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+34 text1 CODE >126:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+35 text1 CODE >127:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+36 text1 CODE >128:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+37 text1 CODE >129:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+38 text1 CODE >130:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+3D text1 CODE >133:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+40 text1 CODE >134:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+41 text1 CODE >135:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+42 text1 CODE >136:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+43 text1 CODE >137:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+44 text1 CODE >138:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+45 text1 CODE >139:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+46 text1 CODE >141:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+4A text1 CODE >142:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+4F text1 CODE >145:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+50 text1 CODE >146:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+51 text1 CODE >147:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+54 text1 CODE >150:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+55 text1 CODE >151:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+56 text1 CODE >152:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+57 text1 CODE >154:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+5A text1 CODE >155:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+5B text1 CODE >156:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+5C text1 CODE >157:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+5D text1 CODE >158:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+5E text1 CODE >159:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+5F text1 CODE >160:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+60 text1 CODE >163:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+61 text1 CODE >164:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+62 text1 CODE >165:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+63 text1 CODE >166:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+64 text1 CODE >168:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+65 text1 CODE >169:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+66 text1 CODE >171:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+68 text1 CODE >172:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+69 text1 CODE >173:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+6A text1 CODE >177:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+9F maintext CODE >85:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+9F maintext CODE >86:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+A4 maintext CODE >89:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+AA maintext CODE >90:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+AD maintext CODE >91:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+B2 maintext CODE >92:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+B3 maintext CODE >93:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+B3 maintext CODE >94:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+B6 maintext CODE >95:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
+B9 maintext CODE >97:C:\Users\judah\Desktop\Proyectos Varios\Programacion de uC\Laboratorio7\Laboratorio7.X\Lab7.c
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -155,7 +183,7 @@ F cinit CODE >504:C:\Users\judah\AppData\Local\Temp\xcAs4ck.s
 # is the name of the object file in which the symbol was defined.
 %SYMTAB
 ___latbits 2 0 ABS 0 - dist/default/production\Laboratorio7.X.production.o
-__Hspace_0 9E 0 ABS 0 - -
+__Hspace_0 D1 0 ABS 0 - -
 __Hspace_1 75 0 ABS 0 - -
 __Hspace_2 0 0 ABS 0 - -
 __Hspace_3 0 0 ABS 0 - -
@@ -168,31 +196,35 @@ _T0CS 40D 0 ABS 0 - dist/default/production\Laboratorio7.X.production.o
 _T0IE 5D 0 ABS 0 - dist/default/production\Laboratorio7.X.production.o
 _T0IF 5A 0 ABS 0 - dist/default/production\Laboratorio7.X.production.o
 _TMR0 1 0 ABS 0 - dist/default/production\Laboratorio7.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\judah\AppData\Local\Temp\xcAs4ck.o
-_main 106 0 CODE 0 maintext dist/default/production\Laboratorio7.X.production.o
+___sp 0 0 STACK 2 stack C:\Users\judah\AppData\Local\Temp\xcAs818.o
+_main 13E 0 CODE 0 maintext dist/default/production\Laboratorio7.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\Laboratorio7.X.production.o
-start 18 0 CODE 0 init C:\Users\judah\AppData\Local\Temp\xcAs4ck.o
+start 18 0 CODE 0 init C:\Users\judah\AppData\Local\Temp\xcAs818.o
 __HbssCOMMON 0 0 ABS 0 bssCOMMON -
 __Hpowerup 0 0 CODE 0 powerup -
-intlevel0 0 0 ENTRY 0 functab C:\Users\judah\AppData\Local\Temp\xcAs4ck.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\judah\AppData\Local\Temp\xcAs4ck.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\judah\AppData\Local\Temp\xcAs4ck.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\judah\AppData\Local\Temp\xcAs4ck.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\judah\AppData\Local\Temp\xcAs4ck.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\judah\AppData\Local\Temp\xcAs4ck.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\judah\AppData\Local\Temp\xcAs818.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\judah\AppData\Local\Temp\xcAs818.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\judah\AppData\Local\Temp\xcAs818.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\judah\AppData\Local\Temp\xcAs818.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\judah\AppData\Local\Temp\xcAs818.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\judah\AppData\Local\Temp\xcAs818.o
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
 wtemp0 7E 0 ABS 0 - dist/default/production\Laboratorio7.X.production.o
 __Hfunctab 0 0 ENTRY 0 functab -
 __Hclrtext 0 0 ABS 0 clrtext -
 _ADRESH 1E 0 ABS 0 - dist/default/production\Laboratorio7.X.production.o
-i1_TMR0_reset 130 0 CODE 0 text4 dist/default/production\Laboratorio7.X.production.o
+i1_TMR0_reset 18E 0 CODE 0 text5 dist/default/production\Laboratorio7.X.production.o
+_CCPR1L 15 0 ABS 0 - dist/default/production\Laboratorio7.X.production.o
 __Lmaintext 0 0 ABS 0 maintext -
-___stackhi 0 0 ABS 0 - C:\Users\judah\AppData\Local\Temp\xcAs4ck.o
-___stacklo 0 0 ABS 0 - C:\Users\judah\AppData\Local\Temp\xcAs4ck.o
+___stackhi 0 0 ABS 0 - C:\Users\judah\AppData\Local\Temp\xcAs818.o
+___stacklo 0 0 ABS 0 - C:\Users\judah\AppData\Local\Temp\xcAs818.o
 start_initialization 1E 0 CODE 0 cinit dist/default/production\Laboratorio7.X.production.o
 _TRISAbits 85 0 ABS 0 - dist/default/production\Laboratorio7.X.production.o
-__end_ofi1_TMR0_reset 13C 0 CODE 0 text4 dist/default/production\Laboratorio7.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\judah\AppData\Local\Temp\xcAs4ck.o
+_TRISCbits 87 0 ABS 0 - dist/default/production\Laboratorio7.X.production.o
+_TMR2IF 61 0 ABS 0 - dist/default/production\Laboratorio7.X.production.o
+__end_ofi1_TMR0_reset 19A 0 CODE 0 text5 dist/default/production\Laboratorio7.X.production.o
+_TMR2_reset 19A 0 CODE 0 text2 dist/default/production\Laboratorio7.X.production.o
+___int_sp 0 0 STACK 2 stack C:\Users\judah\AppData\Local\Temp\xcAs818.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -228,20 +260,22 @@ __Lsfr3 0 0 ABS 0 sfr3 -
 __Ltext 0 0 ABS 0 text -
 __HcstackCOMMON 0 0 ABS 0 cstackCOMMON -
 _GIE 5F 0 ABS 0 - dist/default/production\Laboratorio7.X.production.o
+_PR2 92 0 ABS 0 - dist/default/production\Laboratorio7.X.production.o
 _PS0 408 0 ABS 0 - dist/default/production\Laboratorio7.X.production.o
 _PS1 409 0 ABS 0 - dist/default/production\Laboratorio7.X.production.o
 _PS2 40A 0 ABS 0 - dist/default/production\Laboratorio7.X.production.o
 _PSA 40B 0 ABS 0 - dist/default/production\Laboratorio7.X.production.o
 _SCS 478 0 ABS 0 - dist/default/production\Laboratorio7.X.production.o
-__S0 9E 0 ABS 0 - -
+__S0 D1 0 ABS 0 - -
 __S1 75 0 ABS 0 - -
 __S3 0 0 ABS 0 - -
-_isr 9E 0 CODE 0 text3 dist/default/production\Laboratorio7.X.production.o
+_isr D6 0 CODE 0 text4 dist/default/production\Laboratorio7.X.production.o
 saved_w 7E 0 ABS 0 - dist/default/production\Laboratorio7.X.production.o
-__end_of_isr 106 0 CODE 0 text3 dist/default/production\Laboratorio7.X.production.o
+__end_of_TMR2_reset 1A2 0 CODE 0 text2 dist/default/production\Laboratorio7.X.production.o
+__end_of_isr 13E 0 CODE 0 text4 dist/default/production\Laboratorio7.X.production.o
 __Lintentry 8 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec C:\Users\judah\AppData\Local\Temp\xcAs4ck.o
-__pmaintext 106 0 CODE 0 maintext dist/default/production\Laboratorio7.X.production.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\judah\AppData\Local\Temp\xcAs818.o
+__pmaintext 13E 0 CODE 0 maintext dist/default/production\Laboratorio7.X.production.o
 __Lcommon 0 0 ABS 0 common -
 __Lconfig 0 0 CONFIG 4 config -
 _ADCON0bits 1F 0 ABS 0 - dist/default/production\Laboratorio7.X.production.o
@@ -259,10 +293,11 @@ __Hintentry 18 0 CODE 0 intentry -
 __Lstrings 0 0 ABS 0 strings -
 __Hreset_vec 6 0 CODE 0 reset_vec -
 __ptext1 2C 0 CODE 0 text1 dist/default/production\Laboratorio7.X.production.o
-__ptext2 124 0 CODE 0 text2 dist/default/production\Laboratorio7.X.production.o
-__ptext3 9E 0 CODE 0 text3 dist/default/production\Laboratorio7.X.production.o
-__ptext4 130 0 CODE 0 text4 dist/default/production\Laboratorio7.X.production.o
-_TMR0_reset 124 0 CODE 0 text2 dist/default/production\Laboratorio7.X.production.o
+__ptext2 19A 0 CODE 0 text2 dist/default/production\Laboratorio7.X.production.o
+__ptext3 182 0 CODE 0 text3 dist/default/production\Laboratorio7.X.production.o
+__ptext4 D6 0 CODE 0 text4 dist/default/production\Laboratorio7.X.production.o
+__ptext5 18E 0 CODE 0 text5 dist/default/production\Laboratorio7.X.production.o
+_TMR0_reset 182 0 CODE 0 text3 dist/default/production\Laboratorio7.X.production.o
 __Lpowerup 0 0 CODE 0 powerup -
 __Leeprom_data 0 0 EEDATA 3 eeprom_data -
 __Lreset_vec 0 0 CODE 0 reset_vec -
@@ -274,24 +309,25 @@ _pot1_in 70 0 COMMON 1 bssCOMMON dist/default/production\Laboratorio7.X.producti
 _ANSELbits 188 0 ABS 0 - dist/default/production\Laboratorio7.X.production.o
 __pcstackCOMMON 73 0 COMMON 1 cstackCOMMON dist/default/production\Laboratorio7.X.production.o
 __Hend_init 1E 0 CODE 0 end_init -
-__end_of_main 124 0 CODE 0 maintext dist/default/production\Laboratorio7.X.production.o
-__end_of_TMR0_reset 130 0 CODE 0 text2 dist/default/production\Laboratorio7.X.production.o
+__end_of_main 182 0 CODE 0 maintext dist/default/production\Laboratorio7.X.production.o
+__end_of_TMR0_reset 18E 0 CODE 0 text3 dist/default/production\Laboratorio7.X.production.o
 _IRCF0 47C 0 ABS 0 - dist/default/production\Laboratorio7.X.production.o
 _IRCF1 47D 0 ABS 0 - dist/default/production\Laboratorio7.X.production.o
 _IRCF2 47E 0 ABS 0 - dist/default/production\Laboratorio7.X.production.o
 _PORTC 7 0 ABS 0 - dist/default/production\Laboratorio7.X.production.o
 _PORTD 8 0 ABS 0 - dist/default/production\Laboratorio7.X.production.o
 _PORTE 9 0 ABS 0 - dist/default/production\Laboratorio7.X.production.o
-_TRISC 87 0 ABS 0 - dist/default/production\Laboratorio7.X.production.o
 _TRISD 88 0 ABS 0 - dist/default/production\Laboratorio7.X.production.o
 _TRISE 89 0 ABS 0 - dist/default/production\Laboratorio7.X.production.o
-__end_of_setup 9E 0 CODE 0 text1 dist/default/production\Laboratorio7.X.production.o
+__end_of_setup D6 0 CODE 0 text1 dist/default/production\Laboratorio7.X.production.o
 __Hram 0 0 ABS 0 ram -
 __Lram 0 0 ABS 0 ram -
 interrupt_function 8 0 CODE 0 intentry dist/default/production\Laboratorio7.X.production.o
 _setup 2C 0 CODE 0 text1 dist/default/production\Laboratorio7.X.production.o
 __pintentry 8 0 CODE 0 intentry dist/default/production\Laboratorio7.X.production.o
 __initialization 1E 0 CODE 0 cinit dist/default/production\Laboratorio7.X.production.o
+_T2CONbits 12 0 ABS 0 - dist/default/production\Laboratorio7.X.production.o
+_CCP1CONbits 17 0 ABS 0 - dist/default/production\Laboratorio7.X.production.o
 # %SPLITSTAB Section
 # This section enumerates all the psect splits performed by the assembler.
 # The beginning of the section is indicated by %SPLITSTAB.
@@ -317,7 +353,7 @@ __initialization 1E 0 CODE 0 cinit dist/default/production\Laboratorio7.X.produc
 # and size are in units of delta. The file address is in units of bytes.
 # All other numeric quantities are in decimal.
 %SEGMENTS
-intentry 0 4 8 9A 2
+intentry 0 4 8 CD 2
 reset_vec 0 0 0 3 2
 bssCOMMON 1 70 70 5 1
 # %NOTES Section
