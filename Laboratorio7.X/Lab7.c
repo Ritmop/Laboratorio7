@@ -35,8 +35,7 @@
 #pragma config WRT = OFF        // Flash Program Memory Self Write Enable bits (Write protection off)
 
 /*----------------------- GLOBAL VARIABLES & CONSTANTS -----------------------*/
-#define tmr0_n  131
-#define tmr2_n  131
+#define _tmr0_n  131
 
 uint8_t counter; //Contador
 uint8_t pot0_in; //Analog to digital input of pot0
@@ -86,40 +85,28 @@ int main(void) {
     setup();
     while(1){
         //Loop
-        if(TMR2IF){
-            TRISCbits.TRISC2 = 0; //RC2 as output
-            TMR2_reset();
-        }
-        else{
-            TRISCbits.TRISC2 = 1; //RC2 as input
-            T2CONbits.TMR2ON  = 1;  //Turn ON TMR2 module
-        }
         PORTD = pot0_in;
+        CCPR1L = pot1_in;    //Pulse width 2ms
     }
 }
 /*-------------------------------- SUBROUTINES -------------------------------*/
 void setup(void){
-    //I/O CONFIG
-    TRISAbits.TRISA0 = 0;
-    
-    ANSELbits.ANS1   = 1; //RA1 as analog
-    TRISAbits.TRISA1 = 1; //input
-    ANSELbits.ANS2   = 1; //RA2 as analog
-    TRISAbits.TRISA2 = 1; //input
-    TRISCbits.TRISC2 = 0; //RC2 as output
-    
-    //TRISC  = 0; //PORTC as output
-    TRISD  = 0; //PORTD as output
-    TRISE  = 0; //PORTE as output
-    PORTC  = 0; //Clear PORTC
-    PORTD  = 0; //Clear PORTD
-    PORTE  = 0; //Clear PORTE
-    
     //OSCILLATOR CONFIG
     IRCF2 = 1;  //Internal clock frequency 1MHz
     IRCF1 = 0;
     IRCF0 = 0;
     SCS   = 1;
+    
+    //I/O CONFIG    
+    ANSELbits.ANS1   = 1; //RA1 as analog
+    TRISAbits.TRISA1 = 1; //input
+    ANSELbits.ANS2   = 1; //RA2 as analog
+    TRISAbits.TRISA2 = 1; //input
+    
+    TRISD  = 0; //PORTD as output
+    TRISE  = 0; //PORTE as output
+    PORTD  = 0; //Clear PORTD
+    PORTE  = 0; //Clear PORTE
     
     //TMR0 CONFIG
     T0CS = 0;   //TMR0 Internal clock source
@@ -130,21 +117,26 @@ void setup(void){
     TMR0_reset();
     
     //TMR2 CONFIG
-    T2CONbits.T2CKPS0 = 0;  //TMR2 Prescaler 1:4
-    T2CONbits.T2CKPS1 = 1;
+//    T2CONbits.T2CKPS0 = 0;  //TMR2 Prescaler 1:4
+//    T2CONbits.T2CKPS1 = 1;
     T2CONbits.TOUTPS0 = 1;  //TMR2 Postscaler 1:10
     T2CONbits.TOUTPS1 = 0;
     T2CONbits.TOUTPS2 = 0;
     T2CONbits.TOUTPS3 = 1;
-    T2CONbits.TMR2ON  = 0;  //Turn OFF TMR2 module
+//    T2CONbits.TMR2ON  = 0;  //Turn OFF TMR2 module
     
-    PR2 = 124;  //TMR2 reset every 20ms
-    TMR2_reset();
-    
-    //INTERRUPT CONFIG
-    GIE  = 1;   //Global Interrupt Enable
-    T0IE = 1;   //TMR0 Interrupt Enable
-    ADIE = 1;   //ADC Interrupt Enable
+    //CCP1 CONFIG
+//    CCP1CONbits.CCP1M0 = 0; //PWM Mode & All P1x Active-High
+//    CCP1CONbits.CCP1M1 = 0;
+//    CCP1CONbits.CCP1M2 = 1;
+//    CCP1CONbits.CCP1M3 = 1;
+//    
+//    CCP1CONbits.P1M0 = 0;   //Single output P1A modulated
+//    CCP1CONbits.P1M1 = 0;
+//    
+//    CCPR1L = 0b01111101;    //Pulse width 2ms
+//    CCP1CONbits.DC1B1 = 0;
+//    CCP1CONbits.DC1B0 = 0;
     
     //ADC CONFIG
     ADCON1bits.ADFM  = 0;   //Left justified
@@ -159,25 +151,40 @@ void setup(void){
     ADCON0bits.CHS0  = 1;
     ADCON0bits.ADON  = 1;   //Enable ADC Module
     
-    //CCP1 CONFIG
+    //INTERRUPT CONFIG
+    GIE  = 1;   //Global Interrupt Enable
+    T0IE = 1;   //TMR0 Interrupt Enable
+    ADIE = 1;   //ADC Interrupt Enable
+    
+    //Initialize PWM
+    TRISCbits.TRISC2 = 1; //CCP1 as input
+    
+    PR2 = 124;  //TMR2 reset every 20ms
+    
     CCP1CONbits.CCP1M0 = 0; //PWM Mode & All P1x Active-High
     CCP1CONbits.CCP1M1 = 0;
     CCP1CONbits.CCP1M2 = 1;
-    CCP1CONbits.CCP1M3 = 1;
-    
+    CCP1CONbits.CCP1M3 = 1;    
     CCP1CONbits.P1M0 = 0;   //Single output P1A modulated
     CCP1CONbits.P1M1 = 0;
     
     CCPR1L = 0b01111101;    //Pulse width 2ms
-    CCP1CONbits.DC1B0 = 0;
     CCP1CONbits.DC1B1 = 0;
+    CCP1CONbits.DC1B0 = 0;
     
+    TMR2_reset();
+    T2CONbits.T2CKPS0 = 0;  //TMR2 Prescaler 1:4
+    T2CONbits.T2CKPS1 = 1;
+    T2CONbits.TMR2ON = 1;  //Turn ON TMR2 module
+    
+    while(TMR2IF == 0);     //Loop until TMR2 overflow    
+    TRISCbits.TRISC2 = 1; //CCP1 as output
     
     return;
 }
 
 void TMR0_reset(void){    
-    TMR0 = tmr0_n;  //Load TMR0 value
+    TMR0 = _tmr0_n;  //Load TMR0 value
     T0IF = 0;       //Clear Flag
     return;
 }

@@ -2833,7 +2833,6 @@ extern char * ftoa(float f, int * status);
 
 
 
-
 uint8_t counter;
 uint8_t pot0_in;
 uint8_t pot1_in;
@@ -2870,45 +2869,33 @@ void __attribute__((picinterrupt(("")))) isr(void){
     }
     return;
 }
-# 85 "Lab7.c"
+# 84 "Lab7.c"
 int main(void) {
     setup();
     while(1){
 
-        if(TMR2IF){
-            TRISCbits.TRISC2 = 0;
-            TMR2_reset();
-        }
-        else{
-            TRISCbits.TRISC2 = 1;
-            T2CONbits.TMR2ON = 1;
-        }
         PORTD = pot0_in;
+        CCPR1L = pot1_in;
     }
 }
 
 void setup(void){
 
-    TRISAbits.TRISA0 = 0;
+    IRCF2 = 1;
+    IRCF1 = 0;
+    IRCF0 = 0;
+    SCS = 1;
+
 
     ANSELbits.ANS1 = 1;
     TRISAbits.TRISA1 = 1;
     ANSELbits.ANS2 = 1;
     TRISAbits.TRISA2 = 1;
-    TRISCbits.TRISC2 = 0;
-
 
     TRISD = 0;
     TRISE = 0;
-    PORTC = 0;
     PORTD = 0;
     PORTE = 0;
-
-
-    IRCF2 = 1;
-    IRCF1 = 0;
-    IRCF0 = 0;
-    SCS = 1;
 
 
     T0CS = 0;
@@ -2919,23 +2906,13 @@ void setup(void){
     TMR0_reset();
 
 
-    T2CONbits.T2CKPS0 = 0;
-    T2CONbits.T2CKPS1 = 1;
+
+
     T2CONbits.TOUTPS0 = 1;
     T2CONbits.TOUTPS1 = 0;
     T2CONbits.TOUTPS2 = 0;
     T2CONbits.TOUTPS3 = 1;
-    T2CONbits.TMR2ON = 0;
-
-    PR2 = 124;
-    TMR2_reset();
-
-
-    GIE = 1;
-    T0IE = 1;
-    ADIE = 1;
-
-
+# 142 "Lab7.c"
     ADCON1bits.ADFM = 0;
     ADCON1bits.VCFG0 = 0;
     ADCON1bits.VCFG1 = 0;
@@ -2949,18 +2926,33 @@ void setup(void){
     ADCON0bits.ADON = 1;
 
 
+    GIE = 1;
+    T0IE = 1;
+    ADIE = 1;
+
+
+    TRISCbits.TRISC2 = 1;
+
+    PR2 = 124;
+
     CCP1CONbits.CCP1M0 = 0;
     CCP1CONbits.CCP1M1 = 0;
     CCP1CONbits.CCP1M2 = 1;
     CCP1CONbits.CCP1M3 = 1;
-
     CCP1CONbits.P1M0 = 0;
     CCP1CONbits.P1M1 = 0;
 
     CCPR1L = 0b01111101;
-    CCP1CONbits.DC1B0 = 0;
     CCP1CONbits.DC1B1 = 0;
+    CCP1CONbits.DC1B0 = 0;
 
+    TMR2_reset();
+    T2CONbits.T2CKPS0 = 0;
+    T2CONbits.T2CKPS1 = 1;
+    T2CONbits.TMR2ON = 1;
+
+    while(TMR2IF == 0);
+    TRISCbits.TRISC2 = 1;
 
     return;
 }
