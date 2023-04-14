@@ -81,7 +81,7 @@
    <POPUP w="695" x="474" flags="00000001" y="253" h="453" pid="0" iid="8">
     <PROPERTIES/>
    </POPUP>
-   <POPUP w="695" x="594" flags="00008001" y="505" h="453" pid="0" iid="11">
+   <POPUP w="695" x="394" flags="00008001" y="385" h="453" pid="0" iid="11">
     <PROPERTIES/>
    </POPUP>
   </PWI>
