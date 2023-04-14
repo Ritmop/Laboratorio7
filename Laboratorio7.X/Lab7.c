@@ -1,25 +1,17 @@
-/* 
- * File:   Lab7.c
- * Device: PIC16F887
- * Author: Judah Pérez - 21536
- *Compiler: XC8 (v2.40)
- * 
- * Program: TMR0 Interrupt
- * Hardware:
- * 
- * Created: April 11, 2023, 6:03 AM
- * Last updated:
+/*
+ * File:   prelab7.c
+ * Author: Judah Pérez 21536
+ * Descripción: PIC lee entrada de potenciómetro en RA0 y 
+ * controla un servo en RC2 mediante PWM
+ * valores en dos contadores en los puertos C y D.
+ * Created on 10 de abril de 2023
  */
+// PIC16F887 Configuration Bit Settings
 
-/*--------------------------------- LIBRARIES --------------------------------*/
-#include <xc.h>
-#include <PIC16F887.h>
-#include <stdio.h>
-#include <stdlib.h>
+// 'C' source line config statements
 
-/*---------------------------- CONFIGURATION BITS ----------------------------*/
 // CONFIG1
-#pragma config FOSC = INTRC_NOCLKOUT// Oscillator Selection bits (INTOSCIO oscillator: I/O function on RA6/OSC2/CLKOUT pin, I/O function on RA7/OSC1/CLKIN)
+#pragma config FOSC = INTRC_CLKOUT// Oscillator Selection bits (INTOSC oscillator: CLKOUT function on RA6/OSC2/CLKOUT pin, I/O function on RA7/OSC1/CLKIN)
 #pragma config WDTE = OFF       // Watchdog Timer Enable bit (WDT disabled and can be enabled by SWDTEN bit of the WDTCON register)
 #pragma config PWRTE = OFF      // Power-up Timer Enable bit (PWRT disabled)
 #pragma config MCLRE = OFF      // RE3/MCLR pin function select bit (RE3/MCLR pin function is digital input, MCLR internally tied to VDD)
@@ -27,169 +19,176 @@
 #pragma config CPD = OFF        // Data Code Protection bit (Data memory code protection is disabled)
 #pragma config BOREN = OFF      // Brown Out Reset Selection bits (BOR disabled)
 #pragma config IESO = OFF       // Internal External Switchover bit (Internal/External Switchover mode is disabled)
-#pragma config FCMEN = OFF      // Fail-Safe Clock Monitor Enabled bit (Fail-Safe Clock Monitor is disabled)
-#pragma config LVP = OFF        // Low Voltage Programming Enable bit (RB3 pin has digital I/O, HV on MCLR must be used for programming)
+#pragma config FCMEN = OFF       // Fail-Safe Clock Monitor Enabled bit (Fail-Safe Clock Monitor is enabled)
+#pragma config LVP = OFF         // Low Voltage Programming Enable bit (RB3/PGM pin has PGM function, low voltage programming enabled)
 
 // CONFIG2
 #pragma config BOR4V = BOR40V   // Brown-out Reset Selection bit (Brown-out Reset set to 4.0V)
 #pragma config WRT = OFF        // Flash Program Memory Self Write Enable bits (Write protection off)
 
-/*----------------------- GLOBAL VARIABLES & CONSTANTS -----------------------*/
-#define _tmr0_n  131
+// #pragma config statements should precede project file includes.
+// Use project enums instead of #define for ON and OFF.
 
-uint8_t counter; //Contador
-uint8_t pot0_in; //Analog to digital input of pot0
-uint8_t pot1_in; //Analog to digital input of pot1
+#include <xc.h>
+#include <stdint.h>
 
-/*-------------------------------- PROTOTYPES --------------------------------*/
+/*
+ * Constantes
+ */
+#define _XTAL_FREQ 8000000
+#define _tmr0_n 250 //TMR0 load value
+
+
+/*
+ * Variables
+ */
+uint8_t TMR0_count; //TMR0 counter
+uint8_t pulse_width; //Manual PWM pulse width
+
+/*
+ * Prototipos de funciones
+ */
+
 void setup(void);
-void TMR0_reset(void);
-void TMR2_reset(void);
 
-/*------------------------------- RESET VECTOR -------------------------------*/
+/*
+ * Interrupciones
+ */
 
-/*----------------------------- INTERRUPT VECTOR -----------------------------*/
-void __interrupt() isr(void){
-    if(T0IF){
-        //tmr0 - Period set to 1ms
-        //counter++;
-        TMR0_reset();
-        ADCON0bits.GO  = 1; //Start ADC conversion
-    }
-    if(ADIF){
-        //ADC
-        //Switch ADC input
-        (ADCON0bits.CHS0)?(ADCON0bits.CHS0 = 0):(ADCON0bits.CHS0 = 1);
-        (ADCON0bits.CHS1)?(ADCON0bits.CHS1 = 0):(ADCON0bits.CHS1 = 1);
-        //Display output on PORT
-        if(ADCON0bits.CHS1){
-            pot0_in = ADRESH;            
+void __interrupt() isr (void)
+{
+    if(PIR1bits.ADIF)     //ADC
+    {   
+        if (ADCON0bits.CHS == 0)
+        {
+            // interrupcion
+            CCPR1L = (ADRESH>>1)+124;
+            CCP1CONbits.DC1B1 = ADRESH & 0b01;
+            CCP1CONbits.DC1B0 = (ADRESL>>7);
         }
-        if(ADCON0bits.CHS0){
-            pot1_in = ADRESH;
+        else if (ADCON0bits.CHS == 1)
+        {
+            // interrupcion
+            CCPR2L = (ADRESH>>1)+124;
+            CCP2CONbits.DC2B1 = ADRESH & 0b01;
+            CCP2CONbits.DC2B0 = (ADRESL>>7);
+        }
+        else if (ADCON0bits.CHS == 2){
+            pulse_width = ADRESH;
+           PORTD = pulse_width;
+        }
+        PIR1bits.ADIF = 0;
+    }
+    if(T0IF == 1){  //TMR0
+        TMR0 = _tmr0_n;
+        TMR0_count = TMR0_count+25;
+        PORTB = TMR0_count;
+        T0IF = 0;
+    }
+    }
+
+
+/*
+ * Main
+ */
+
+void main (void)
+{
+    setup();
+    ADCON0bits.GO = 1;
+    while(1)
+    {
+        if (ADCON0bits.GO == 0)
+        {
+            if (ADCON0bits.CHS == 0)
+                ADCON0bits.CHS = 1;
+            else if(ADCON0bits.CHS == 1)
+                ADCON0bits.CHS = 2;
+            else if(ADCON0bits.CHS == 2)
+                ADCON0bits.CHS = 0;
+            
+            __delay_us(50);
+            ADCON0bits.GO = 1;
         }
         
-        ADIF = 0;   //Reset flag
-    }
-    return;
-}
-
-/*--------------------------- INTERRUPT SUBROUTINES --------------------------*/
-
-/*---------------------------------- TABLES ----------------------------------*/
-
-/*----------------------------------- SETUP ----------------------------------*/
-
-/*----------------------------------- MAIN -----------------------------------*/
-int main(void) {
-    setup();
-    while(1){
-        //Loop
-        PORTD = pot0_in;
-        CCPR1L = pot1_in;    //Pulse width 2ms
+        if (TMR0_count > pulse_width)
+            PORTCbits.RC3 = 0;
+        else
+            PORTCbits.RC3 = 1;
     }
 }
-/*-------------------------------- SUBROUTINES -------------------------------*/
-void setup(void){
-    //OSCILLATOR CONFIG
-    IRCF2 = 1;  //Internal clock frequency 1MHz
-    IRCF1 = 0;
-    IRCF0 = 0;
-    SCS   = 1;
-    
-    //I/O CONFIG    
-    ANSELbits.ANS1   = 1; //RA1 as analog
-    TRISAbits.TRISA1 = 1; //input
-    ANSELbits.ANS2   = 1; //RA2 as analog
-    TRISAbits.TRISA2 = 1; //input
-    
-    TRISD  = 0; //PORTD as output
-    TRISE  = 0; //PORTE as output
-    PORTD  = 0; //Clear PORTD
-    PORTE  = 0; //Clear PORTE
-    
-    //TMR0 CONFIG
-    T0CS = 0;   //TMR0 Internal clock source
-    PSA  = 0;   //Prescaler Assigned to TMR0
-    PS2  = 0;   //Prescaler Rate 1:2
-    PS1  = 0;
-    PS0  = 0;
-    TMR0_reset();
-    
-    //TMR2 CONFIG
-//    T2CONbits.T2CKPS0 = 0;  //TMR2 Prescaler 1:4
-//    T2CONbits.T2CKPS1 = 1;
-    T2CONbits.TOUTPS0 = 1;  //TMR2 Postscaler 1:10
-    T2CONbits.TOUTPS1 = 0;
-    T2CONbits.TOUTPS2 = 0;
-    T2CONbits.TOUTPS3 = 1;
-//    T2CONbits.TMR2ON  = 0;  //Turn OFF TMR2 module
-    
-    //CCP1 CONFIG
-//    CCP1CONbits.CCP1M0 = 0; //PWM Mode & All P1x Active-High
-//    CCP1CONbits.CCP1M1 = 0;
-//    CCP1CONbits.CCP1M2 = 1;
-//    CCP1CONbits.CCP1M3 = 1;
-//    
-//    CCP1CONbits.P1M0 = 0;   //Single output P1A modulated
-//    CCP1CONbits.P1M1 = 0;
-//    
-//    CCPR1L = 0b01111101;    //Pulse width 2ms
-//    CCP1CONbits.DC1B1 = 0;
-//    CCP1CONbits.DC1B0 = 0;
-    
-    //ADC CONFIG
-    ADCON1bits.ADFM  = 0;   //Left justified
-    ADCON1bits.VCFG0 = 0;   //Vref+ = Vdd
-    ADCON1bits.VCFG1 = 0;   //Vref- = Vss
-    
-    ADCON0bits.ADCS1 = 0;   //Conversion clock = Fosc/2
-    ADCON0bits.ADCS0 = 0;
-    ADCON0bits.CHS3  = 0;   //ADC input from AN1
-    ADCON0bits.CHS2  = 0;
-    ADCON0bits.CHS1  = 0;
-    ADCON0bits.CHS0  = 1;
-    ADCON0bits.ADON  = 1;   //Enable ADC Module
-    
-    //INTERRUPT CONFIG
-    GIE  = 1;   //Global Interrupt Enable
-    T0IE = 1;   //TMR0 Interrupt Enable
-    ADIE = 1;   //ADC Interrupt Enable
-    
-    //Initialize PWM
-    TRISCbits.TRISC2 = 1; //CCP1 as input
-    
-    PR2 = 124;  //TMR2 reset every 20ms
-    
-    CCP1CONbits.CCP1M0 = 0; //PWM Mode & All P1x Active-High
-    CCP1CONbits.CCP1M1 = 0;
-    CCP1CONbits.CCP1M2 = 1;
-    CCP1CONbits.CCP1M3 = 1;    
-    CCP1CONbits.P1M0 = 0;   //Single output P1A modulated
-    CCP1CONbits.P1M1 = 0;
-    
-    CCPR1L = 0b01111101;    //Pulse width 2ms
-    CCP1CONbits.DC1B1 = 0;
-    CCP1CONbits.DC1B0 = 0;
-    
-    TMR2_reset();
-    T2CONbits.T2CKPS0 = 0;  //TMR2 Prescaler 1:4
-    T2CONbits.T2CKPS1 = 1;
-    T2CONbits.TMR2ON = 1;  //Turn ON TMR2 module
-    
-    while(TMR2IF == 0);     //Loop until TMR2 overflow    
-    TRISCbits.TRISC2 = 1; //CCP1 as output
-    
-    return;
-}
 
-void TMR0_reset(void){    
-    TMR0 = _tmr0_n;  //Load TMR0 value
-    T0IF = 0;       //Clear Flag
-    return;
-}
+/*
+ * Funciones
+ */
 
-void TMR2_reset(void){
-    TMR2IF = 0;       //Clear Flag
+void setup(void)
+{
+    // configuración de entradas y salidas
+    ANSEL = 0b00000111;
+    ANSELH = 0;
+    
+    TRISA = 0xFF;
+    TRISCbits.TRISC3 = 0; //RC3 Output
+    TRISB = 0;
+    TRISD = 0;
+    
+    // Configuración del oscilador
+    OSCCONbits.IRCF = 0b0111; //8MHz
+    OSCCONbits.SCS = 1;
+    
+    //configuración del TMR0 
+    OPTION_REGbits.PS = 0b100;
+    OPTION_REGbits.PSA = 0;
+    OPTION_REGbits.T0CS = 0;    
+    TMR0 = _tmr0_n;
+    
+    // Configuración del ADC
+    ADCON1bits.ADFM = 0;        //justificación a la izquierda
+    ADCON1bits.VCFG0 = 0;       //Vref en VSS y VDD
+    ADCON1bits.VCFG1 = 0;
+    
+    ADCON0bits.ADCS = 0b10;     //FOSC/32
+    ADCON0bits.CHS = 0;
+    ADCON0bits.ADON = 1;
+    __delay_us(50);
+    
+    // configuración del PWM
+    TRISCbits.TRISC2 = 1;       // RC2/CCP1 como entrada
+    TRISCbits.TRISC1 = 1;       // RC1/CCP2 como entrada
+    PR2 = 255;                  // configuración del periodo
+    
+    
+    CCP1CONbits.P1M = 0;        // Configuración del modo PWM
+    CCP1CONbits.CCP1M = 0b1100;
+    
+    CCP2CONbits.CCP2M = 0b1100;
+    
+    CCPR1L = 0x0f;              //ciclo de trabajo inicial
+    CCP1CONbits.DC1B = 0;
+    
+    CCPR2L = 0x0f;              //ciclo de trabajo inicial
+    CCP2CONbits.DC2B0 = 0;
+    CCP2CONbits.DC2B1 = 0;
+    
+    PIR1bits.TMR2IF = 0;        //se toma la bandera
+    T2CONbits.T2CKPS = 0b11;    //prescaler a 1:16
+    T2CONbits.TMR2ON = 1; 
+    
+    while(PIR1bits.TMR2IF == 0);  //esperar un ciclo del TMR2
+    PIR1bits.TMR2IF = 0;
+    
+    TRISCbits.TRISC2 = 0;       //Salida del PWM
+    TRISCbits.TRISC1 = 0; 
+    
+    
+    // Configuración de las interrupciones
+    
+    PIR1bits.ADIF = 0;
+    PIE1bits.ADIE = 1;
+    INTCONbits.PEIE = 1;
+    INTCONbits.T0IE = 1;
+    INTCONbits.GIE = 1;
+    
     return;
 }
